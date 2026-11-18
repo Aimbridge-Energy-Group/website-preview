@@ -1,0 +1,370 @@
+/* Aimbridge Energy — shared site styles.
+   Visual style taken from the team's reference design (the review site, copied in original/; change log #63):
+   Arial type, deep navy (#07131f / #0b1f33) header and dark bands with a soft teal-navy glow, logo-green buttons
+   (#79cc50) with navy text, white rounded cards with light blue-gray borders, light green (#a8f17c) labels on dark.
+   Where a reference text color is under WCAG AA (4.5:1) on light backgrounds, the nearest color the reference already
+   uses is substituted: green labels and links #377c21 (reference #589b35 / #61b33a); spec labels #617281 (reference
+   #6b7b88). Layout of our pages is unchanged; only their styling follows the reference. */
+
+:root{
+  --ink:#0b1f33;          /* body text, navy */
+  --navy:#0b1f33;         /* dark cards and panels */
+  --night:#07131f;        /* header, darkest bands */
+  --footer:#06111d;
+  --green:#79cc50;        /* buttons (navy text 8.4:1) */
+  --green-hover:#6dbe45;  /* button hover, focus ring, rules */
+  --green-dot:#83d755;    /* small markers on dark */
+  --green-dark:#377c21;   /* green text and links on light backgrounds (5.2:1 on white) */
+  --green-light:#a8f17c;  /* labels and links on dark (7.3:1 or better) */
+  --green-tint:#eff5eb;   /* light hover background, tags */
+  --green-tag:#466b35;    /* tag text on the tint (5.5:1) */
+  --band:radial-gradient(ellipse at 82% 38%,#214857 0%,#102b3c 32%,#07131f 75%);   /* homepage hero */
+  --band-head:radial-gradient(ellipse at 90% 20%,#173b4a,#07131f 75%);                /* page headers */
+  --band-about:radial-gradient(ellipse at 95% 0%,#173b4a 0%,#0b1f33 40%,#07131f 80%); /* About opening */
+  --muted:#617281;        /* secondary text (5.0:1 on white) */
+  --muted-dark:#c3d0db;   /* body text on dark */
+  --line:#dce5eb;         /* card borders */
+  --line-soft:#e2e9ee;    /* rules */
+  --input-line:#cbd6de;
+  --bg:#f5f8fb;           /* page background */
+  --bg-alt:#f4f7f9;       /* alternate section background */
+  --gutter:42px;
+  --font:Arial,Helvetica,sans-serif;
+}
+
+/* ---------- base */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+[id]{scroll-margin-top:100px}   /* keep in-page jump targets clear of the sticky header */
+body{margin:0;font-family:var(--font);color:var(--ink);background:var(--bg);overflow-x:clip;min-height:100vh;display:flex;flex-direction:column}
+main{flex:1}
+a{color:inherit}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+button,a{-webkit-tap-highlight-color:transparent}
+img{max-width:100%}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--green-hover);outline-offset:4px}
+h1{font-size:clamp(42px,5vw,72px);letter-spacing:-.045em;line-height:1.04;margin:22px 0}
+h2{font-size:clamp(32px,3.6vw,49px);letter-spacing:-.035em;line-height:1.1;margin:15px 0 22px}
+h3{font-size:25px;letter-spacing:-.02em}
+.kicker{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--green-dark);margin:0}
+.skip-link{position:absolute;left:-9999px;top:0;z-index:100;background:#fff;color:var(--ink);padding:10px 14px;border-radius:0 0 6px 0;font-weight:700}
+.skip-link:focus{left:0}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* ---------- buttons: flat, 7 px corners; green with navy text; outlined on dark */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;padding:16px 21px;border-radius:7px;
+  font-size:14px;font-weight:700;line-height:1.2;border:1px solid transparent;transition:background .18s,border-color .18s,color .18s}
+.btn.primary{background:var(--green);color:var(--ink)}
+.btn.primary:hover{background:var(--green-hover)}
+.btn.secondary,.btn.outline,.btn.download{background:#fff;border-color:var(--input-line);color:var(--ink)}
+.btn.secondary:hover,.btn.outline:hover,.btn.download:hover{border-color:var(--ink)}
+/* on dark bands and the dark product page: outlined, white text */
+.hero .btn.secondary,.page-head .btn.secondary,.about-mission .btn.secondary,
+.product-page .btn.secondary,.product-page .btn.outline,.product-page .btn.download{background:transparent;border-color:#627583;color:#fff}
+.hero .btn.secondary:hover,.page-head .btn.secondary:hover,.about-mission .btn.secondary:hover,
+.product-page .btn.secondary:hover,.product-page .btn.outline:hover,.product-page .btn.download:hover{border-color:var(--green-light);color:var(--green-light)}
+
+/* ---------- header and main navigation */
+.site-header{position:sticky;top:0;z-index:50;background:var(--night);color:#fff;border-bottom:1px solid #1c3345}
+.header-inner{max-width:1360px;margin:auto;min-height:86px;padding:15px var(--gutter);display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand img{display:block;height:56px;width:auto}
+.nav-toggle{display:none}
+.nav-list{list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:26px;font-size:14px;font-weight:700}
+.nav-list>li{position:relative}
+.nav-list>li>a,.sub-toggle{display:inline-flex;align-items:center;gap:6px;padding:8px 0;border:0;background:none;color:#fff;text-decoration:none;font-weight:700;line-height:1.2;white-space:nowrap}
+.nav-list>li>a:hover,.nav-list>li>a[aria-current="page"],.sub-toggle:hover,.has-sub.current>.sub-toggle{color:var(--green-light)}
+/* action pair (Support, Contact): matched buttons set apart from the page links by a thin divider */
+.nav-list>li.nav-action+li.nav-action{margin-left:-14px}   /* buttons sit 12 px apart instead of the 26 px link gap */
+.nav-list>li.nav-action:not(li.nav-action+li.nav-action){padding-left:26px;border-left:1px solid #ffffff26}
+.nav-list>li>a.nav-btn{padding:12px 18px;border-radius:7px;border:1px solid transparent}
+.nav-list>li>a.nav-btn-outline{border-color:#627583;color:#fff}
+.nav-list>li>a.nav-btn-outline:hover,.nav-list>li>a.nav-btn-outline[aria-current="page"]{border-color:var(--green-light);color:var(--green-light)}
+.nav-list>li>a.nav-btn-solid{background:var(--green);border-color:var(--green);color:var(--ink)}
+.nav-list>li>a.nav-btn-solid:hover,.nav-list>li>a.nav-btn-solid[aria-current="page"]{background:var(--green-hover);border-color:var(--green-hover);color:var(--ink)}
+.chev{width:10px;height:7px;display:block;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;transition:transform .18s}
+.has-sub.open>.sub-toggle .chev{transform:rotate(180deg)}
+
+/* dropdown panels: JS toggles .open; without JS they open on hover / keyboard focus */
+.subnav{display:none;position:absolute;top:calc(100% + 12px);left:0;min-width:250px;background:#fff;color:var(--ink);border-radius:12px;box-shadow:0 16px 40px #06111d30;padding:10px;font-weight:400;z-index:60}
+.has-sub:last-child .subnav{left:auto;right:0}
+html.js .has-sub.open>.subnav{display:block}
+html:not(.js) .has-sub:hover>.subnav,html:not(.js) .has-sub:focus-within>.subnav{display:block}
+.subnav ul{list-style:none;margin:0;padding:0}
+.subnav a{display:block;padding:13px 15px;border-radius:6px;text-decoration:none;color:var(--ink);font-size:14px;line-height:1.4}
+.subnav a:hover,.subnav a:focus-visible{background:var(--green-tint)}
+.subnav a[aria-current="page"]{background:var(--green-tint);font-weight:700}
+/* Products: category list + flyout panels (change log #5).
+   Flyouts are positioned against the Products panel, so the panel must not clip (no overflow). */
+.subnav-products{width:310px;left:auto;right:0}   /* right-aligned so flyouts have room to open to the right */
+.cat-toggle,.subnav .cat-link{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:13px 15px;border:0;border-bottom:1px solid #edf1f4;border-radius:6px;background:none;color:var(--ink);font-size:14px;font-weight:600;line-height:1.4;text-align:left;text-decoration:none}
+.cat-toggle:hover,.cat.open>.cat-toggle{background:var(--green-tint)}
+.cat.open>.cat-toggle{color:var(--green-dark)}
+.caret{width:7px;height:11px;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;transition:transform .18s}
+.flyout{display:none;position:absolute;top:0;left:100%;margin-left:6px;width:260px;min-height:100%;padding:10px;background:#fff;border-radius:12px;box-shadow:0 16px 40px #06111d30}
+.flyout a{font-size:13px;color:#526877}
+.fly-left .flyout{left:auto;right:100%;margin-left:0;margin-right:6px}   /* fallback when there is no room on the right */
+.fly-left .caret{transform:rotate(180deg)}
+html.js .cat.open>.flyout{display:block}
+html:not(.js) .cat:hover>.flyout,html:not(.js) .cat:focus-within>.flyout{display:block}
+.fly-title{margin:0;padding:10px 15px 6px;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--green-dark)}
+.badge{display:inline-block;margin-left:6px;padding:3px 6px;border-radius:4px;background:var(--green-tint);color:var(--green-tag);font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;vertical-align:1px;white-space:nowrap}
+
+/* tablet: keep the menu horizontal, tighten spacing */
+@media(max-width:1050px){
+  :root{--gutter:24px}
+  .header-inner{padding:15px var(--gutter);gap:16px}
+  .brand img{height:46px}
+  .nav-list{gap:14px;font-size:12px}
+  .nav-list>li>a.nav-btn{padding:10px 13px}
+  .nav-list>li.nav-action:not(li.nav-action+li.nav-action){padding-left:14px}
+  .nav-list>li.nav-action+li.nav-action{margin-left:-6px}
+}
+
+/* phone and small tablet: collapse the menu behind a Menu button (below 900 px the full menu does not fit) */
+@media(max-width:767px){:root{--gutter:18px}}
+@media(max-width:899px){
+  .header-inner{flex-wrap:wrap;min-height:64px;padding:10px var(--gutter)}
+  .brand img{height:40px}
+  .nav-toggle{display:inline-flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid #627583;border-radius:7px;background:none;color:#fff;font-size:14px;font-weight:700}
+  .bars,.bars:before,.bars:after{display:block;width:18px;height:2px;background:currentColor;border-radius:1px;position:relative}
+  .bars:before,.bars:after{content:'';position:absolute;left:0}
+  .bars:before{top:-6px}.bars:after{top:6px}
+  .site-nav{display:none;width:100%}
+  html:not(.js) .site-nav,.site-header.nav-open .site-nav{display:block}
+  .site-header.nav-open{max-height:100vh;overflow-y:auto}
+  .nav-list{flex-direction:column;align-items:stretch;gap:0;padding:4px 0 10px;font-size:15px}
+  .nav-list>li{border-top:1px solid #ffffff1a}
+  .nav-list>li>a,.sub-toggle{display:flex;width:100%;justify-content:space-between;padding:15px 2px}
+  .nav-list>li.nav-action:not(li.nav-action+li.nav-action),.nav-list>li.nav-action+li.nav-action{margin-left:0;padding-left:0;border-left:0}
+  .nav-list>li>a.nav-btn{background:none;border:0;border-radius:0;color:#fff;padding:15px 2px}
+  .nav-list>li>a.nav-btn:hover,.nav-list>li>a.nav-btn[aria-current="page"]{background:none;color:var(--green-light)}
+  .subnav,.subnav-products{position:static;width:auto;max-height:none;overflow:visible;box-shadow:none;margin:0 0 12px}
+  /* flyouts become nested lists that open in place */
+  .flyout,.fly-left .flyout{position:static;width:auto;min-height:0;margin:0 0 6px;padding:0 0 0 12px;border-radius:0;box-shadow:none}
+  .fly-title{display:none}
+  .fly-left .caret{transform:none}
+  .cat.open>.cat-toggle .caret{transform:rotate(90deg)}
+}
+
+/* ---------- page structure */
+.page-head{background:var(--band-head);color:#fff}
+.page-head-inner{max-width:1260px;margin:auto;padding:78px var(--gutter) 62px}
+.page-head h1{font-size:clamp(42px,5vw,70px);max-width:850px}
+.page-head .kicker{color:var(--green-light)}
+.page-head p:not(.kicker){font-size:18px;line-height:1.8;color:var(--muted-dark);max-width:800px;margin:0}
+.section{padding:85px var(--gutter)}
+.wrap{max-width:1260px;margin:auto}
+.status-line{display:inline-block;margin:0 0 20px;padding:12px 15px;border:1px solid rgba(55,124,33,.25);border-radius:10px;background:var(--green-tint);color:var(--green-tag);font-size:14px;font-weight:700}
+
+/* review-draft notices: must all be resolved before publication */
+.draft-note{max-width:760px;margin:0;padding:14px 18px;border:1px dashed #c9a227;border-radius:10px;background:#fff8e1;color:#5c4a00;font-size:14px;line-height:1.6}
+.draft-note strong{display:inline-block;margin-right:10px;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+
+/* ---------- homepage hero */
+.hero{position:relative;overflow:hidden;color:#fff;background:var(--band)}
+.hero-inner{position:relative;max-width:1360px;margin:auto;padding:95px var(--gutter) 85px}
+.hero-copy{max-width:900px}
+.hero h1{max-width:900px;margin-top:0}
+.hero-intro{max-width:700px;margin:0;font-size:18px;line-height:1.7;color:var(--muted-dark)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 0}
+.hero .draft-note{margin-top:34px}
+
+@media(max-width:1050px){.hero-inner{min-height:0;padding:65px var(--gutter)}}
+
+/* ---------- homepage PowerCor banner (change log #74; layout of the reference hero product visual): copy left, both
+   cabinets right on a soft teal glow. The image itself gets no filter or shadow (renders are shown as supplied). */
+.pc-banner{position:relative;overflow:hidden;color:#fff;background:radial-gradient(ellipse at 75% 55%,#163d51 0%,#0b1f33 45%,#07131f 85%);border-top:1px solid #ffffff12}
+.pc-banner-inner{max-width:1360px;margin:auto;padding:70px var(--gutter) 60px;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:40px;align-items:center}
+.pc-banner .kicker{color:var(--green-light)}
+.pc-banner h2{margin:16px 0 18px}
+.pc-banner-copy>p:not(.kicker){margin:0;max-width:560px;font-size:17px;line-height:1.75;color:var(--muted-dark)}
+.pc-banner .actions{margin-top:28px}
+.pc-banner .btn.secondary{background:transparent;border-color:#627583;color:#fff}
+.pc-banner .btn.secondary:hover{border-color:var(--green-light);color:var(--green-light)}
+.pc-banner-visual{position:relative;isolation:isolate}
+.pc-banner-visual:before{content:"";position:absolute;inset:8% 0 0;border-radius:50%;background:radial-gradient(ellipse,#65b8b22b,transparent 67%);filter:blur(24px);z-index:-1}   /* glow behind the image, not on it */
+.pc-banner-visual img{display:block;width:100%;height:auto}
+@media(max-width:900px){.pc-banner-inner{grid-template-columns:1fr;gap:28px;padding:50px var(--gutter) 44px}.pc-banner-visual{max-width:640px}}
+
+/* ---------- homepage product cards (change log #71; reference .products / .pcard): navy section, two-column grid of
+   white cards; whole card is clickable; renders shown as supplied on white */
+.products{background:var(--navy);color:#fff}
+.products h2{margin:0 0 36px}
+.productgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.pcard{position:relative;isolation:isolate;border-radius:18px;overflow:hidden;background:#fff;color:var(--ink);transition:transform .22s ease,box-shadow .22s ease}
+.pimage{height:270px;background:#fff;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line-soft)}
+.pimage img{display:block;width:100%;height:100%;object-fit:contain}
+.pcard-missing{width:calc(100% - 40px);height:calc(100% - 40px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border:1px dashed #91a3b0;border-radius:12px;background:var(--bg-alt);color:var(--muted);font-size:13px}
+.pcard-missing strong{font-size:18px;color:var(--ink)}
+.pbody{padding:28px}
+.pbody .tag{margin:0;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--green-dark)}
+.pbody h3{margin:10px 0 12px}
+.pbody>p:not(.tag):not(.pstatus){margin:0;font-size:14px;line-height:1.7;color:var(--muted)}
+.pstatus{margin:17px 0 0;padding-top:17px;border-top:1px solid var(--line-soft);font-size:12px;line-height:1.6;color:var(--muted)}
+.pstatus b{color:var(--ink)}
+.pcard-link{display:inline-flex;margin-top:20px;color:var(--green-dark);text-decoration:none;font-weight:800;font-size:14px}
+.pcard-link:after{content:"";position:absolute;inset:0;z-index:2;border-radius:18px}   /* whole card clickable */
+.pcard:focus-within{outline:3px solid var(--green-light);outline-offset:5px}
+.pcard-link:focus-visible{outline:none}
+@media(hover:hover) and (pointer:fine){.pcard:hover{transform:translateY(-4px);box-shadow:0 22px 48px #0005;z-index:3}.pcard:hover .pcard-link{text-decoration:underline}}
+@media(prefers-reduced-motion:reduce){.pcard{transition:none}.pcard:hover{transform:none}}
+@media(max-width:1050px){.pimage{height:220px}}
+@media(max-width:760px){.productgrid{grid-template-columns:1fr}.pimage{height:240px}.pbody{padding:24px}}
+
+/* ---------- custom product development banner (homepage, above the inquiry form; reference .custom-project) */
+.custom-banner-section{background:var(--bg-alt);padding-bottom:0}
+.custom-project{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:50px;padding:38px;background:var(--navy);color:#fff;border-radius:18px}
+.custom-project .kicker{color:var(--green-light)}
+.custom-project h2{font-size:30px;letter-spacing:-.02em;line-height:1.15;margin:16px 0}
+.custom-project p:not(.kicker){margin:0;font-size:15px;line-height:1.8;color:var(--muted-dark)}
+.custom-project-action{border-left:1px solid #ffffff25;padding-left:35px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:20px}
+@media(max-width:900px){.custom-project{grid-template-columns:1fr;gap:25px}.custom-project-action{border-left:0;border-top:1px solid #ffffff25;padding:25px 0 0}}
+@media(max-width:650px){.custom-project{padding:26px}.custom-project h2{font-size:26px}}
+
+/* ---------- inquiry form (shared; brief §11) */
+.inquiry-section{background:var(--bg-alt)}
+.inquiry-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:start}
+.inquiry-copy h2{margin-top:0}
+.inquiry-copy p:not(.kicker){color:var(--muted);line-height:1.75;font-size:15px}
+.inquiry-copy a{color:var(--green-dark);font-weight:700}
+.form-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:34px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{display:flex;flex-direction:column;gap:9px;font-size:13px;font-weight:700}
+.field.full,.form-foot,.form-status{grid-column:1/-1}
+input,select,textarea{width:100%;padding:13px;border:1px solid var(--input-line);border-radius:6px;background:#fff;color:var(--ink);font-weight:400}
+textarea{min-height:125px;resize:vertical}
+.form-foot{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px}
+button.btn{cursor:pointer}
+.btn:disabled{opacity:.6;cursor:not-allowed}
+.form-note{margin:0;font-size:12px;line-height:1.6;color:var(--muted)}
+.form-status{margin:0;padding:12px 14px;border:1px solid #f0c36d;border-radius:8px;background:#fff6e0;color:#6b4400;font-size:14px;line-height:1.5}
+@media(max-width:900px){.inquiry-grid{grid-template-columns:1fr;gap:28px}}
+@media(max-width:767px){.hero-inner{padding:45px var(--gutter) 52px}.hero-intro{font-size:17px}.form-card{padding:26px}.form-grid{grid-template-columns:1fr}}
+
+/* ---------- Sales and Support pages: phone card beside the form */
+.contact-grid{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:26px;align-items:start}
+.contact-box{background:var(--navy);color:#fff;border-radius:18px;padding:34px}
+.contact-box h2{font-size:28px;letter-spacing:-.02em;margin:0 0 18px}
+.contact-phone{margin:0;font-size:30px;font-weight:700;letter-spacing:-.02em}
+.contact-phone a{color:var(--green-light);text-decoration:none}
+.contact-hours{margin:10px 0 0;font-size:15px;line-height:1.7;color:var(--muted-dark)}
+.form-title{font-size:28px;letter-spacing:-.02em;margin:0 0 22px}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr}}
+@media(max-width:767px){.contact-box{padding:26px}}
+
+/* ---------- Where to Buy (change log #70) */
+.list-title{font-size:28px;letter-spacing:-.02em;margin:0 0 22px}
+.distributor-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.distributor{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px}
+.distributor h3{margin:0 0 8px;font-size:20px}
+.distributor p{margin:6px 0 0;font-size:14px;line-height:1.6;color:var(--muted)}
+.distributor a{color:var(--green-dark);font-weight:700}
+.distributor-region{font-size:11px!important;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.cta-banner-section{padding-top:0}
+@media(max-width:900px){.distributor-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.distributor-list{grid-template-columns:1fr}}
+
+/* ---------- product pages: dark navy page, white gallery panel, white spec cards */
+.visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.product-page{background:linear-gradient(180deg,#07131f,#0b1f33);color:#fff}
+.product-inner{max-width:1360px;margin:auto;padding:72px var(--gutter) 90px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:start}
+.product-gallery{min-width:0}
+.gallery-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;aspect-ratio:16/9;   /* matches the renders, shown unmodified (#47) */background:#fff;border-radius:28px;box-shadow:0 30px 90px rgba(0,0,0,.32)}
+.gallery-track::-webkit-scrollbar{display:none}
+.gallery-slide{flex:0 0 100%;min-width:0;scroll-snap-align:start;scroll-snap-stop:always;display:flex;align-items:center;justify-content:center;padding:8px}
+.gallery-slide img{display:block;width:100%;height:100%;object-fit:contain}
+.image-missing{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;border:1px dashed #91a3b0;border-radius:14px;background:var(--bg-alt);color:var(--ink);padding:28px}
+.image-missing strong{font-size:20px;line-height:1.4}
+.image-missing p{margin:0;font-size:14px;color:#526775;max-width:300px;line-height:1.7}
+.gallery-controls{display:flex;justify-content:center;align-items:center;gap:4px;margin-top:15px}
+.gallery-arrow{min-width:44px;min-height:44px;border:1px solid #ffffff30;border-radius:6px;background:transparent;color:#c1d1dd;font-size:23px;line-height:1;margin:0 8px}
+.gallery-arrow:hover{border-color:var(--green-light);color:var(--green-light)}
+.gallery-dot{min-width:32px;min-height:44px;border:0;background:none;display:inline-flex;align-items:center;justify-content:center}
+.gallery-dot span{width:8px;height:8px;border-radius:50%;background:#8d9fab}
+.gallery-dot[aria-pressed="true"] span{background:var(--green-light)}
+.gallery-track:focus-visible,.gallery-arrow:focus-visible,.gallery-dot:focus-visible{outline:3px solid var(--green-light);outline-offset:4px}
+.product-info{padding-top:6px}
+.product-info .kicker{color:#9be66d}
+.product-info h1{font-size:clamp(44px,5vw,72px);line-height:.98;letter-spacing:-.05em;margin:14px 0 24px}
+.product-blurb{font-size:19px;line-height:1.65;color:#c9d4dd;margin:0}
+.product-glance{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:30px 0}
+.product-glance div{background:#fff;border:1px solid #dfe7ed;border-radius:18px;padding:20px 23px}
+.product-glance dt{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.product-glance dd{margin:9px 0 0;font-size:18px;font-weight:700;color:var(--ink)}
+.product-downloads,.product-contact{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px}
+.product-docs{margin-top:34px;padding-top:20px;border-top:1px solid #ffffff20}
+.product-docs h2{font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin:0 0 10px;color:var(--green-light)}
+.product-docs ul{list-style:none;margin:0;padding:0}
+.product-docs li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #ffffff12;font-size:14px}
+.product-docs a{color:var(--green-light);font-weight:700}
+.product-docs span{color:#9eb7c7}
+.product-info .status-line{margin:0 0 18px;border-color:rgba(168,241,124,.2);background:rgba(109,190,69,.08);color:#d5efc6}
+.product-page .draft-note{margin-top:20px}
+@media(max-width:900px){.product-inner{grid-template-columns:1fr;gap:34px;padding-top:40px}}   /* gallery stacks above the description (brief §7) */
+@media(max-width:767px){.gallery-track{border-radius:18px}.gallery-slide{padding:15px}.product-info h1{font-size:46px}}
+@media(max-width:560px){.product-glance{grid-template-columns:1fr}}
+
+/* ---------- About Aimbridge */
+.about-mission{position:relative;overflow:hidden;color:#fff;background:var(--band-about)}
+.about-mission-inner{position:relative;max-width:1260px;margin:auto;padding:78px var(--gutter) 65px}
+.about-mission .kicker{color:var(--green-light)}
+.mission-statement{margin:25px 0 0;max-width:1000px;font-size:clamp(30px,3.3vw,46px);line-height:1.12;letter-spacing:-.04em;font-weight:700}
+.about-values{background:var(--bg-alt)}
+.about-values h2.kicker{margin:0}
+.values-list{list-style:none;margin:30px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.values-list li{padding:30px;border:1px solid var(--line);border-radius:16px;background:#fff}
+.values-list h3{margin:0 0 14px;font-size:22px}
+.values-list p{margin:0;font-size:15px;line-height:1.8;color:var(--muted)}
+@media(max-width:900px){.values-list{grid-template-columns:1fr;gap:15px}.values-list li{padding:22px}}
+.about-team{background:#fff}
+.about-team .draft-note{margin-bottom:40px}
+.about-team h2{margin-top:0}
+.team-intro{max-width:880px;margin:0;font-size:17px;line-height:1.75;color:var(--muted)}
+/* team members: bordered rows, small square photo beside the name (reference .teammember) */
+.team-grid{list-style:none;margin:30px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.team-member{display:grid;grid-template-columns:70px minmax(0,1fr);column-gap:18px;align-items:start;border:1px solid #e0e7ed;border-radius:12px;padding:18px;background:#fff}
+.team-photo{grid-row:1/span 3;width:70px;height:70px;border-radius:8px;overflow:hidden;background:#edf2f5}
+.team-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.team-photo-missing{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--muted)}
+.team-photo-missing span{font-weight:700;font-size:20px;color:#91a3b0}
+.team-photo-missing p{margin:0;font-size:9px;line-height:1.2;text-align:center}
+.team-member h3{margin:4px 0 0;font-size:18px;letter-spacing:-.01em}
+.team-title{margin:6px 0 0;font-size:12px;color:var(--muted)}
+.team-bio{margin:12px 0 0;font-size:14px;line-height:1.7;color:var(--muted)}
+@media(max-width:760px){.team-grid{grid-template-columns:1fr}}
+@media(max-width:767px){.about-mission-inner{padding:50px var(--gutter) 40px}}
+
+/* ---------- Projects: each project is a card, dark summary panel beside the photo (reference .project-profile) */
+.page-head+.section{background:var(--bg-alt)}
+.project{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;margin:0 0 32px}
+.project:last-child{margin-bottom:0}
+.project-main{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.9fr);align-items:stretch}
+.project.flip .project-main{grid-template-columns:minmax(0,.9fr) minmax(0,1.2fr)}
+.project.flip .project-photo{order:2}
+.project-photo{display:block;width:100%;height:100%;min-height:320px;object-fit:cover}
+.project-text{background:var(--navy);color:#fff;padding:38px}
+.project-text h2{margin:0 0 18px;font-size:clamp(30px,3.3vw,44px);line-height:1.12;color:#fff}
+.project-text p{margin:0;font-size:17px;line-height:1.8;color:var(--muted-dark)}
+.project-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;padding:30px 38px 38px}
+.photo-missing{display:flex;align-items:center;justify-content:center;aspect-ratio:4/3;border:1px dashed #91a3b0;border-radius:10px;background:var(--bg-alt);color:var(--muted);font-size:13px}
+.project-gallery figure{margin:0}
+.project-gallery img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;background:#edf2f5}
+.project-gallery figcaption{margin-top:10px;font-size:12px;line-height:1.6;color:var(--muted)}
+@media(max-width:850px){.project-main,.project.flip .project-main{grid-template-columns:1fr}.project.flip .project-photo{order:0}.project-photo{min-height:0;aspect-ratio:2/1}.project-text{padding:30px}.project-gallery{grid-template-columns:repeat(2,minmax(0,1fr));padding:24px 30px 30px}}
+@media(max-width:560px){.project-text,.project-gallery{padding:24px}}
+
+/* ---------- footer: darkest navy, logo left, links right, small text */
+.site-footer{background:var(--footer);color:#a9bac7;padding:30px var(--gutter);font-size:12px}
+.footer-inner{max-width:1260px;margin:auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 30px}
+.footer-brand{display:flex;flex-direction:row;align-items:center;gap:18px}
+.footer-brand img{height:40px;width:auto}
+.footer-brand .draft-note{padding:4px 10px;font-size:12px;border-radius:6px}
+.footer-brand .draft-note strong{font-size:10px;margin-right:6px}
+.footer-contact{margin:0}
+.footer-contact a{color:#dce6ed}
+.footer-links ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 26px}
+.footer-links a{color:#dce6ed;text-decoration:none}
+.footer-links a:hover{color:var(--green-light)}
+.footer-legal{max-width:1260px;margin:18px auto 0;padding-top:14px;border-top:1px solid #ffffff14;font-size:12px}
+@media(max-width:767px){.page-head-inner{padding:48px var(--gutter) 40px}.section{padding:50px var(--gutter)}.footer-inner{flex-direction:column;align-items:flex-start}.footer-links ul{gap:8px 18px}}
