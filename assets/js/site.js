@@ -238,3 +238,14 @@
     });
   });
 })();
+
+/* Policy pages: the Contents list starts closed on narrow screens; the Print button appears only with JavaScript. */
+(function () {
+  var toc = document.querySelector('.policy-toc details');
+  if (toc && !window.matchMedia('(min-width: 900px)').matches) toc.open = false;
+  var btn = document.querySelector('.policy-print-btn');
+  if (btn) {
+    btn.hidden = false;
+    btn.addEventListener('click', function () { window.print(); });
+  }
+})();
