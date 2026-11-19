@@ -135,6 +135,23 @@
   desktop.addEventListener('change', function () { setMenu(false); closeSubs(); });
 })();
 
+/* Homepage product panel (change log #84): show one product per page load, chosen at random but never the
+   same one twice in a row. Without JavaScript (or storage) the first product stays visible. */
+(function () {
+  var items = document.querySelectorAll('[data-hero-product]');
+  if (items.length < 2) return;
+  var key = 'aimbridge-hero-product', last = -1, pick;
+  try { last = parseInt(localStorage.getItem(key), 10); } catch (e) {}
+  if (last >= 0 && last < items.length) {
+    pick = Math.floor(Math.random() * (items.length - 1));
+    if (pick >= last) pick += 1;            // skip the one shown last time
+  } else {
+    pick = Math.floor(Math.random() * items.length);
+  }
+  Array.prototype.forEach.call(items, function (el, i) { el.hidden = i !== pick; });
+  try { localStorage.setItem(key, String(pick)); } catch (e) {}
+})();
+
 /* Product gallery (change log #20): one view at a time; arrows, dots, swipe (native horizontal
    scroll-snap, which leaves vertical page scrolling alone) and left/right arrow keys. No auto-rotation. */
 (function () {
