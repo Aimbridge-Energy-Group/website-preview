@@ -266,7 +266,7 @@ button.btn{cursor:pointer}
 .distributor p{margin:6px 0 0;font-size:14px;line-height:1.6;color:var(--muted)}
 .distributor a{color:var(--green-dark);font-weight:700}
 .distributor-region{font-size:11px!important;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
-.cta-banner-section{padding-top:0}
+.section+.cta-banner-section{padding-top:0}   /* right after the distributor list; after the page heading it keeps normal spacing (#92) */
 @media(max-width:900px){.distributor-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.distributor-list{grid-template-columns:1fr}}
 
