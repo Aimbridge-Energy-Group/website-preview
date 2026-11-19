@@ -7,7 +7,7 @@
 <title>DCL-18 DC Loadcenter | Aimbridge Energy</title>
 <meta name="description" content="The DCL-18 combines DC/DC power conversion, distribution and branch circuit protection in one recessed wall-mount panel, with up to 18 plug-in breakers on a split A/B bus that can convert to a single bus. Each bus has its own 3 kW buck-boost converter, delivering regulated 12, 24 or 48 VDC from a 9–60 VDC battery.">
 <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
-<link rel="stylesheet" href="../../assets/css/site.css?v=2441f70686">
+<link rel="stylesheet" href="../../assets/css/site.css?v=9791a6231e">
 <script>document.documentElement.classList.add('js')</script>
 <script src="../../assets/js/site.js?v=a0bb0bb874" defer></script>
 <script type="application/ld+json">
@@ -54,92 +54,88 @@
  "additionalProperty": [
   {
    "@type": "PropertyValue",
-   "name": "DC/DC converters",
-   "value": "Buck-boost, one per bus (two on dual-converter models, one on -0 models)"
+   "name": "Converters",
+   "value": "Buck-boost, one per bus, or none"
   },
   {
    "@type": "PropertyValue",
-   "name": "Battery input voltage range",
+   "name": "Battery input",
    "value": "9–60 VDC",
-   "unitCode": "VLT",
    "minValue": 9,
-   "maxValue": 60
+   "maxValue": 60,
+   "unitCode": "VLT"
   },
   {
    "@type": "PropertyValue",
-   "name": "Regulated output voltage",
-   "value": "12, 24 or 48 VDC per bus, by model"
+   "name": "Regulated output",
+   "value": "12, 24 or 48 VDC"
   },
   {
    "@type": "PropertyValue",
-   "name": "Regulated output power",
+   "name": "Output power",
    "value": 3000,
    "unitCode": "WTT",
-   "description": "Per bus"
+   "description": "3000 W per bus"
   },
   {
    "@type": "PropertyValue",
-   "name": "Bus configuration",
-   "value": "Split A/B bus or single bus"
+   "name": "Without converters",
+   "value": "48 VDC bus, unregulated"
   },
   {
    "@type": "PropertyValue",
-   "name": "Input current (max)",
+   "name": "Bus",
+   "value": "Split A/B or single"
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "Input current",
    "value": 360,
    "unitCode": "AMP",
-   "description": "Split A/B bus: 180 A per bus, 360 A total; single bus: 360 A"
+   "description": "360 A total"
   },
   {
    "@type": "PropertyValue",
-   "name": "Branch circuit positions",
-   "value": 18,
-   "description": "9 A-side, 9 B-side"
+   "name": "Branch positions",
+   "value": 18
   },
   {
    "@type": "PropertyValue",
-   "name": "Branch circuit protection",
-   "value": "Hydraulic-magnetic plug-in breakers, 1–30 A, 80 VDC, 1-pole, mid trip, UL 489"
+   "name": "Breakers",
+   "value": "1–30 A plug-in, 80 VDC"
   },
   {
    "@type": "PropertyValue",
-   "name": "Branch circuit wire size",
-   "value": "#14 to #6 AWG"
-  },
-  {
-   "@type": "PropertyValue",
-   "name": "Input termination",
-   "value": "1/4-20 stud per input bus"
+   "name": "Wire size",
+   "value": "#14–#6 AWG"
   },
   {
    "@type": "PropertyValue",
    "name": "Mounting",
-   "value": "Recessed wall mount"
+   "value": "Recessed wall"
   },
   {
    "@type": "PropertyValue",
    "name": "Enclosure",
-   "value": "NEMA Type 1, indoor, steel"
+   "value": "NEMA Type 1, steel"
   },
   {
    "@type": "PropertyValue",
-   "name": "Cable entry",
-   "value": "Top or bottom: 10 knockouts and 1 concentric knockout at each end"
+   "name": "Dimensions",
+   "value": "26.74 × 14.74 × 6.78 in (679 × 374 × 172 mm)"
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "Weight",
+   "value": "45 lb (20.4 kg), with converters"
   },
   {
    "@type": "PropertyValue",
    "name": "Operating temperature",
-   "value": "-4 to +104 °F (-20 to +40 °C)",
-   "unitCode": "FAH",
+   "value": "−4 to +104 °F (−20 to +40 °C)",
    "minValue": -4,
-   "maxValue": 104
-  },
-  {
-   "@type": "PropertyValue",
-   "name": "Humidity",
-   "value": "5–95% RH, non-condensing",
-   "unitCode": "P1",
-   "minValue": 5,
-   "maxValue": 95
+   "maxValue": 104,
+   "unitCode": "FAH"
   }
  ],
  "subjectOf": [
@@ -166,19 +162,7 @@
    "brand": {
     "@type": "Brand",
     "name": "Aimbridge Energy"
-   },
-   "additionalProperty": [
-    {
-     "@type": "PropertyValue",
-     "name": "Unregulated bus voltage",
-     "value": "48 VDC; suitable for 12 and 24 VDC systems"
-    },
-    {
-     "@type": "PropertyValue",
-     "name": "Rating",
-     "value": "360 A total"
-    }
-   ]
+   }
   },
   {
    "@type": "Product",
@@ -337,6 +321,13 @@
       <div class="product-contact"><a class="btn primary" href="../../contact/sales/index.html?product=dcl-18-dc-loadcenter">Contact Sales</a><a class="btn outline" href="../../contact/support/index.html?product=dcl-18-dc-loadcenter">Technical Support</a></div>
       
     </div>
+  </div>
+</section>
+<section class="product-specs" aria-labelledby="specs-title">
+  <div class="product-specs-inner">
+    <h2 id="specs-title">Specifications</h2>
+    <div class="spec-groups"><details class="spec-group"><summary>DC/DC conversion</summary><table class="spec-table"><tbody><tr><th scope="row">Converters</th><td>Buck-boost, one per bus, or none</td></tr><tr><th scope="row">Battery input</th><td>9–60 VDC</td></tr><tr><th scope="row">Regulated output</th><td>12, 24 or 48 VDC</td></tr><tr><th scope="row">Output power</th><td>3000 W per bus</td></tr><tr><th scope="row">Without converters</th><td>48 VDC bus, unregulated</td></tr></tbody></table></details><details class="spec-group"><summary>Electrical</summary><table class="spec-table"><tbody><tr><th scope="row">Bus</th><td>Split A/B or single</td></tr><tr><th scope="row">Input current</th><td>360 A total</td></tr><tr><th scope="row">Branch positions</th><td>18</td></tr><tr><th scope="row">Breakers</th><td>1–30 A plug-in, 80 VDC</td></tr><tr><th scope="row">Wire size</th><td>#14–#6 AWG</td></tr></tbody></table></details><details class="spec-group"><summary>Mechanical &amp; environmental</summary><table class="spec-table"><tbody><tr><th scope="row">Mounting</th><td>Recessed wall</td></tr><tr><th scope="row">Enclosure</th><td>NEMA Type 1, steel</td></tr><tr><th scope="row">Dimensions</th><td>26.74 × 14.74 × 6.78 in (679 × 374 × 172 mm)</td></tr><tr><th scope="row">Weight</th><td>45 lb (20.4 kg), with converters</td></tr><tr><th scope="row">Operating temperature</th><td>−4 to +104 °F (−20 to +40 °C)</td></tr></tbody></table></details></div>
+    <p class="specs-note">Typical at 77 °F (25 °C), nominal input voltage and rated load, unless otherwise noted. Complete specifications: <a href="../../downloads/dcl-18-dc-loadcenter/DCL18-DS-01-Rev-A-Datasheet.pdf" download>DCL18-DS-01 Rev A datasheet</a>.</p>
   </div>
 </section>
 </main>

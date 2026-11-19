@@ -360,6 +360,26 @@ button.btn{cursor:pointer}
   .policy-text a{color:#000}
 }
 
+/* ---------- product specifications (#102): below the product section, collapsible groups on white */
+.product-specs{background:#fff;border-bottom:1px solid var(--line-soft)}
+.product-specs-inner{max-width:960px;margin:auto;padding:64px var(--gutter) 72px}
+.product-specs h2{margin:0 0 20px;font-size:clamp(28px,3vw,38px);letter-spacing:-.03em}
+.spec-groups{border-top:2px solid var(--ink)}
+.spec-group{border-bottom:1px solid var(--line)}
+.spec-group summary{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 4px;cursor:pointer;list-style:none;font-size:17px;font-weight:700}
+.spec-group summary::-webkit-details-marker{display:none}
+.spec-group summary::after{content:"+";font-size:22px;font-weight:400;line-height:1;color:var(--green-dark)}
+.spec-group[open] summary::after{content:"\2212"}
+.spec-group summary:hover{color:var(--green-dark)}
+.spec-table{width:100%;border-collapse:collapse;margin:0 0 14px;font-size:15px}
+.spec-table th,.spec-table td{text-align:left;vertical-align:top;padding:10px 4px;border-top:1px solid var(--line-soft)}
+.spec-table th{width:38%;padding-right:16px;font-weight:400;color:var(--muted)}
+.spec-table td{font-weight:700;line-height:1.45}
+.specs-note{margin:18px 0 0;font-size:13px;line-height:1.6;color:var(--muted)}
+.specs-note a{color:var(--green-dark);font-weight:700}
+@media(max-width:767px){.product-specs-inner{padding:44px var(--gutter) 52px}.spec-table th{width:44%}}
+@media print{.spec-group:not([open]) .spec-table{display:table}}
+
 /* ---------- About Aimbridge */
 .about-mission{position:relative;overflow:hidden;color:#fff;background:var(--band-about)}
 .about-mission-inner{position:relative;max-width:1260px;margin:auto;padding:78px var(--gutter) 65px}
