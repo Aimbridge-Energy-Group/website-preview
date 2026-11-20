@@ -241,10 +241,15 @@
       // Site field name -> HubSpot contact property (#118)
       var map = { firstname: 'firstname', lastname: 'lastname', company: 'company', email: 'email',
                   inquiry_type: 'inquiry_type', product: 'support_product', message: 'message' };
+      // HubSpot dropdowns whose option internal values are the visible labels (#120): send the label.
+      // inquiry_type's internal values are the site's codes (product-inquiry ...), so it sends the value.
+      var sendLabel = { product: true };
       var fields = [];
       Object.keys(map).forEach(function (name) {
         var el = form.elements[name];
-        if (el && el.value) fields.push({ objectTypeId: '0-1', name: map[name], value: el.value });
+        if (!el || !el.value) return;
+        var value = sendLabel[name] ? el.options[el.selectedIndex].text : el.value;
+        fields.push({ objectTypeId: '0-1', name: map[name], value: value });
       });
       button.disabled = true;
       status.hidden = true;
