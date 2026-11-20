@@ -246,6 +246,9 @@ button.btn{cursor:pointer}
 .btn:disabled{opacity:.6;cursor:not-allowed}
 .form-note{margin:0;font-size:12px;line-height:1.6;color:var(--muted)}
 .form-status{margin:0;padding:12px 14px;border:1px solid #f0c36d;border-radius:8px;background:#fff6e0;color:#6b4400;font-size:14px;line-height:1.5}
+.form-status.is-sent{border-color:#9fcf86;background:#eef8e8;color:#245a14}
+.form-status.is-error{border-color:#e3a3a3;background:#fdeeee;color:#8a1c1c}
+.form-trap{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
 @media(max-width:900px){.inquiry-grid{grid-template-columns:1fr;gap:28px}}
 @media(max-width:767px){.hero-inner{padding:45px var(--gutter) 52px}.hero-intro{font-size:17px}.form-card{padding:26px}.form-grid{grid-template-columns:1fr}}
 

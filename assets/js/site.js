@@ -195,8 +195,9 @@
   });
 })();
 
-/* Inquiry forms (change log #6). Preview mode: nothing is sent anywhere. A submit (after the browser's
-   required-field checks pass) only reports that the message was not sent. The inquiry type can be
+/* Inquiry forms (change log #6, #118). While the form's data-live is false (site.json form_live) nothing is
+   sent: a submit (after the browser's required-field checks pass) only reports that. When live, the fields go
+   to HubSpot's form-submission address in data-submit (no HubSpot script or cookies). The inquiry type can be
    preselected by ?inquiry=<value> in the page address or by a link with data-inquiry. */
 (function () {
   var forms = document.querySelectorAll('form.inquiry-form');
@@ -225,8 +226,39 @@
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var status = form.querySelector('.form-status');
-      status.textContent = 'Not sent. This preview form is not connected yet, so your message was not delivered.';
-      status.hidden = false;
+      var button = form.querySelector('[type="submit"]');
+      function show(text, kind) {
+        status.textContent = text;
+        status.className = 'form-status' + (kind ? ' is-' + kind : '');
+        status.hidden = false;
+      }
+      if (form.getAttribute('data-live') !== 'true') {
+        show('Not sent. This preview form is not connected yet, so your message was not delivered.');
+        return;
+      }
+      var trap = form.querySelector('input[name="website"]');
+      if (trap && trap.value) return;                  // spam trap filled: not sent
+      // Site field name -> HubSpot contact property (#118)
+      var map = { firstname: 'firstname', lastname: 'lastname', company: 'company', email: 'email',
+                  inquiry_type: 'inquiry_type', product: 'support_product', message: 'message' };
+      var fields = [];
+      Object.keys(map).forEach(function (name) {
+        var el = form.elements[name];
+        if (el && el.value) fields.push({ objectTypeId: '0-1', name: map[name], value: el.value });
+      });
+      button.disabled = true;
+      status.hidden = true;
+      fetch(form.getAttribute('data-submit'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fields: fields, context: { pageUri: location.href, pageName: document.title } })
+      }).then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        show(form.getAttribute('data-sent'), 'sent');  // button stays disabled so it is not sent twice
+      }).catch(function () {
+        show(form.getAttribute('data-not-sent'), 'error');
+        button.disabled = false;
+      });
     });
   });
 
