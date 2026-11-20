@@ -55,94 +55,139 @@
   {
    "@type": "PropertyValue",
    "name": "Converters",
-   "value": "Buck-boost, one per bus, or none"
+   "value": "Buck-boost DC/DC, one per bus (two on dual-converter models, one on -0 models)"
   },
   {
    "@type": "PropertyValue",
-   "name": "Battery input",
-   "value": "9–60 VDC",
+   "name": "Input voltage range",
+   "value": "9–60 VDC (absolute minimum and maximum)",
+   "unitCode": "VLT",
    "minValue": 9,
-   "maxValue": 60,
-   "unitCode": "VLT"
+   "maxValue": 60
   },
   {
    "@type": "PropertyValue",
-   "name": "Regulated output",
-   "value": "12, 24 or 48 VDC"
+   "name": "Regulated output voltage",
+   "value": "12, 24 or 48 VDC per bus, by model"
   },
   {
    "@type": "PropertyValue",
-   "name": "Output power",
+   "name": "Regulated output power",
    "value": 3000,
    "unitCode": "WTT",
    "description": "3000 W per bus"
   },
   {
    "@type": "PropertyValue",
-   "name": "Without converters",
-   "value": "48 VDC bus, unregulated"
+   "name": "Unregulated bus voltage (basic model)",
+   "value": "48 VDC; suitable for 12 and 24 VDC systems"
   },
   {
    "@type": "PropertyValue",
-   "name": "Bus",
-   "value": "Split A/B or single"
+   "name": "DC inputs",
+   "value": "1 (single bus) or 2 (split A/B bus)"
   },
   {
    "@type": "PropertyValue",
-   "name": "Input current",
+   "name": "Input current (max)",
    "value": 360,
    "unitCode": "AMP",
-   "description": "360 A total"
+   "description": "Split A/B bus: 180 A per bus, 360 A total; single bus (hot bus strap installed): 360 A"
   },
   {
    "@type": "PropertyValue",
-   "name": "Branch positions",
-   "value": 18
+   "name": "Branch circuit positions",
+   "value": 18,
+   "description": "18 (9 A-side, 9 B-side)"
   },
   {
    "@type": "PropertyValue",
-   "name": "Breakers",
-   "value": "1–30 A plug-in, 80 VDC"
+   "name": "Branch circuit protection",
+   "value": "Telecom-grade hydraulic-magnetic plug-in breakers, 1–30 A, 80 VDC, 1-pole, mid trip, UL 489"
   },
   {
    "@type": "PropertyValue",
-   "name": "Wire size",
-   "value": "#14–#6 AWG"
+   "name": "Return and ground",
+   "value": "Negative bar and ground bar included"
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "Input termination",
+   "value": "1/4-20 stud per input bus"
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "Branch circuit wire size",
+   "value": "#14 to #6 AWG"
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "Branch circuit termination",
+   "value": "Screw wire lug"
   },
   {
    "@type": "PropertyValue",
    "name": "Mounting",
-   "value": "Recessed wall"
+   "value": "Recessed wall mount"
   },
   {
    "@type": "PropertyValue",
    "name": "Enclosure",
-   "value": "NEMA Type 1, steel"
+   "value": "NEMA Type 1, indoor"
   },
   {
    "@type": "PropertyValue",
-   "name": "Dimensions",
-   "value": "26.74 × 14.74 × 6.78 in (679 × 374 × 172 mm)"
+   "name": "Material",
+   "value": "Steel"
   },
   {
    "@type": "PropertyValue",
    "name": "Weight",
-   "value": "45 lb (20.4 kg), with converters"
+   "value": "45 lb (20.4 kg), converter models"
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "Humidity",
+   "value": "5–95% RH, non-condensing",
+   "unitCode": "P1",
+   "minValue": 5,
+   "maxValue": 95
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "Cable entry",
+   "value": "Top or bottom: 10 knockouts and 1 concentric knockout at each end"
   },
   {
    "@type": "PropertyValue",
    "name": "Operating temperature",
    "value": "−4 to +104 °F (−20 to +40 °C)",
+   "unitCode": "FAH",
    "minValue": -4,
-   "maxValue": 104,
-   "unitCode": "FAH"
+   "maxValue": 104
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "External dimensions (H × W × D)",
+   "value": "26.74 × 14.74 × 6.78 in (679 × 374 × 172 mm)"
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "Depth, excluding latch",
+   "value": "6.14 in (156 mm)"
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "Enclosure box (H × W × D)",
+   "value": "26.12 × 14.12 × 6.08 in (663 × 359 × 155 mm)",
+   "description": "Per drawing 071-1023-00 Rev A"
   }
  ],
  "subjectOf": [
   {
    "@type": "DigitalDocument",
-   "name": "DCL18-DS-01 Rev A Datasheet",
-   "url": "https://www.aimbridgeenergy.com/downloads/dcl-18-dc-loadcenter/DCL18-DS-01-Rev-A-Datasheet.pdf",
+   "name": "048-1004-20 Rev A Datasheet",
+   "url": "https://www.aimbridgeenergy.com/downloads/dcl-18-dc-loadcenter/048-1004-20-Rev-A-Datasheet.pdf",
    "encodingFormat": "application/pdf"
   },
   {
@@ -317,7 +362,7 @@
       
       <p class="product-blurb">The DCL-18 combines DC/DC power conversion, distribution and branch circuit protection in one recessed wall-mount panel, with up to 18 plug-in breakers on a split A/B bus that can convert to a single bus. Each bus has its own 3 kW buck-boost converter, delivering regulated 12, 24 or 48 VDC from a 9–60 VDC battery.</p>
       <dl class="product-glance"><div><dt>Battery input</dt><dd>9–60 VDC</dd></div><div><dt>Regulated output</dt><dd>12, 24 or 48 VDC</dd></div><div><dt>Output power</dt><dd>3000 W per bus</dd></div><div><dt>Branch positions</dt><dd>18</dd></div></dl>
-      <div class="product-downloads"><a class="btn download" href="../../downloads/dcl-18-dc-loadcenter/DCL18-DS-01-Rev-A-Datasheet.pdf" download>Download Datasheet</a><a class="btn download" href="../../downloads/dcl-18-dc-loadcenter/071-1023-00-Rev-A-Dimensional-Drawing.pdf" download>Download Dimensional Drawings</a></div>
+      <div class="product-downloads"><a class="btn download" href="../../downloads/dcl-18-dc-loadcenter/048-1004-20-Rev-A-Datasheet.pdf" download>Download Datasheet</a><a class="btn download" href="../../downloads/dcl-18-dc-loadcenter/071-1023-00-Rev-A-Dimensional-Drawing.pdf" download>Download Dimensional Drawings</a></div>
       <div class="product-contact"><a class="btn primary" href="../../contact/sales/index.html?product=dcl-18-dc-loadcenter">Contact Sales</a><a class="btn outline" href="../../contact/support/index.html?product=dcl-18-dc-loadcenter">Technical Support</a></div>
       
     </div>

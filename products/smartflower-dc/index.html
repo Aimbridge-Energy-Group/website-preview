@@ -35,71 +35,164 @@
   "unitCode": "FOT",
   "description": "Maximum height while tracking"
  },
+ "weight": {
+  "@type": "QuantitativeValue",
+  "minValue": 2050,
+  "maxValue": 2500,
+  "unitCode": "LBR",
+  "description": "Varies by configuration"
+ },
  "additionalProperty": [
   {
    "@type": "PropertyValue",
-   "name": "Solar",
+   "name": "System type",
+   "value": "Solar tracker DC power system; off-grid"
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "Operating mode",
+   "value": "Off-grid only; battery required"
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "SmartFlower nominal power",
    "value": 2.5,
    "unitCode": "KWT",
-   "description": "2.5 kW dual-axis tracker"
+   "description": "2.5 kWp"
   },
   {
    "@type": "PropertyValue",
-   "name": "Operation",
-   "value": "Off-grid, battery required"
+   "name": "PV inputs",
+   "value": "1 standard (SmartFlower); 2 with the auxiliary PV option"
   },
   {
    "@type": "PropertyValue",
-   "name": "Battery",
-   "value": "11.4 kWh LFP internal, or external 48 V"
+   "name": "Charge controllers",
+   "value": "Morningstar TriStar MPPT 600V (TS-MPPT-60-600V-48), one per PV input"
   },
   {
    "@type": "PropertyValue",
-   "name": "Auxiliary PV",
-   "value": "Up to 3,200 W (option)",
-   "maxValue": 3200,
-   "unitCode": "WTT"
+   "name": "Charge current",
+   "value": "60 A max per charge controller"
   },
   {
    "@type": "PropertyValue",
-   "name": "Regulated channels",
-   "value": "Up to 3",
-   "maxValue": 3
+   "name": "Auxiliary PV input",
+   "value": 3200,
+   "unitCode": "WTT",
+   "description": "3,200 W nominal at 48 V"
   },
   {
    "@type": "PropertyValue",
-   "name": "Voltage",
-   "value": "12, 24 or 48 VDC per channel"
+   "name": "Auxiliary PV voltage",
+   "value": "600 VDC maximum open-circuit; operating up to 525 VDC Voc"
   },
   {
    "@type": "PropertyValue",
-   "name": "Power",
-   "value": "720 / 960 / 1008 W per channel"
+   "name": "Auxiliary PV input current",
+   "value": "15 A max (self-limiting)"
   },
   {
    "@type": "PropertyValue",
-   "name": "Options",
-   "value": "48 V battery-bus output, PoE++"
+   "name": "Regulated output voltages",
+   "value": "12 VDC, 24 VDC, or 48 VDC",
+   "description": "Each channel is factory-configured to one voltage"
   },
   {
    "@type": "PropertyValue",
-   "name": "Branch breakers",
-   "value": "Up to 10, 1–35 A",
-   "maxValue": 10
+   "name": "Regulated output channels",
+   "value": "Up to 3 independent channels",
+   "maxValue": 3,
+   "description": "Channels are independent and are not intended for current sharing"
   },
   {
    "@type": "PropertyValue",
-   "name": "Height",
-   "value": "16 ft (5 m) max",
-   "maxValue": 16,
-   "unitCode": "FOT"
+   "name": "Regulated output ratings",
+   "value": "12 VDC / 720 W; 24 VDC / 960 W; 48 VDC / 1008 W per channel"
   },
   {
    "@type": "PropertyValue",
-   "name": "Active area",
-   "value": 17,
-   "unitCode": "FOT",
-   "description": "17 ft (5.2 m) diameter"
+   "name": "Bulk DC output",
+   "value": "48 V nominal battery bus",
+   "description": "Bulk-output models only"
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "PoE++ option",
+   "value": "Optional weatherized PoE++ output"
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "DC branch protection",
+   "value": "Up to 10 branch circuit breakers, 1–35 A"
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "DC/DC converters",
+   "value": "Mean Well SD-1000L, one per regulated channel"
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "Internal battery option",
+   "value": "3 × Briggs & Stratton SimpliPHI AmpliPHI 3.8-48"
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "Battery capacity",
+   "value": 11.4,
+   "unitCode": "KWH",
+   "description": "11.4 kWh (3 × 3.8 kWh) at 100% DOD"
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "Battery nominal voltage",
+   "value": 51.2,
+   "unitCode": "VLT",
+   "description": "51.2 VDC"
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "Battery chemistry",
+   "value": "Lithium iron phosphate (LFP)"
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "Battery voltage range",
+   "value": "48–56 VDC",
+   "unitCode": "VLT",
+   "minValue": 48,
+   "maxValue": 56
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "Battery charge / discharge current",
+   "value": "37.5 A continuous charge and discharge per battery; 100 A peak discharge per battery (10 min)"
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "Battery charging temperature",
+   "value": "32 to 120 °F (0 to 49 °C)"
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "Interfaces",
+   "value": "PoE++ ports (option): power and data for cameras, access points, and radios; remote monitoring (option): available on request"
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "Mounting",
+   "value": "Four-point foundation attachment"
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "Foundation options",
+   "value": "Earth screws, concrete foundation, or pre-cast pad"
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "Wind protection",
+   "value": "Remote wind sensor; safety position 1 at 29 mph (13 m/s), the recommended setting; safety position 2 at 1.35 × the safety position 1 setting",
+   "description": "Sensor is installed outside the active tracker area"
   },
   {
    "@type": "PropertyValue",
@@ -108,20 +201,47 @@
   },
   {
    "@type": "PropertyValue",
-   "name": "Foundation",
-   "value": "Earth screws, concrete or pre-cast pad"
+   "name": "Operating temperature",
+   "value": "−4 to +140 °F (−20 to +60 °C)",
+   "unitCode": "FAH",
+   "minValue": -4,
+   "maxValue": 140
   },
   {
    "@type": "PropertyValue",
-   "name": "Wind protection",
-   "value": "Remote wind sensor"
+   "name": "Active area diameter",
+   "value": "Ø 17 ft (5.2 m) minimum",
+   "unitCode": "FOT",
+   "minValue": 17
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "Maximum height (tracking)",
+   "value": 16,
+   "unitCode": "FOT",
+   "description": "16 ft (5 m)"
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "Weight",
+   "value": "2,050–2,500 lb (930–1,134 kg), varies by configuration"
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "DC/DC converter certification",
+   "value": "IEC 62368-1 CB, EN 62368-1, AS/NZS 62368.1 — certified"
+  },
+  {
+   "@type": "PropertyValue",
+   "name": "Internal battery listing",
+   "value": "UL 1973 and UL 1642 components; UL 9540A tested — listed"
   }
  ],
  "subjectOf": [
   {
    "@type": "DigitalDocument",
-   "name": "SFDC-DS-01 Rev A Datasheet",
-   "url": "https://www.aimbridgeenergy.com/downloads/smartflower-dc/SFDC-DS-01-Rev-A-Datasheet.pdf",
+   "name": "048-1003-20 Rev A Datasheet",
+   "url": "https://www.aimbridgeenergy.com/downloads/smartflower-dc/048-1003-20-Rev-A-Datasheet.pdf",
    "encodingFormat": "application/pdf"
   }
  ]
@@ -157,7 +277,7 @@
       
       <p class="product-blurb">The SmartFlower dual-axis solar tracker paired with an Aimbridge DC power system, delivering battery-supported, regulated DC power from a single installation. Configure up to three outputs at 12, 24 or 48 VDC, with optional storage, PoE++ and auxiliary PV.</p>
       <dl class="product-glance"><div><dt>PV</dt><dd>2.5 kW dual-axis tracker</dd></div><div><dt>Regulated outputs</dt><dd>Up to 3 × 12/24/48 VDC</dd></div><div><dt>Storage</dt><dd>Optional 11.4 kWh LFP</dd></div><div><dt>Enclosure</dt><dd>NEMA 3R</dd></div></dl>
-      <div class="product-downloads"><a class="btn download" href="../../downloads/smartflower-dc/SFDC-DS-01-Rev-A-Datasheet.pdf" download>Download Datasheet</a></div>
+      <div class="product-downloads"><a class="btn download" href="../../downloads/smartflower-dc/048-1003-20-Rev-A-Datasheet.pdf" download>Download Datasheet</a></div>
       <div class="product-contact"><a class="btn primary" href="../../contact/sales/index.html?product=smartflower-dc">Contact Sales</a><a class="btn outline" href="../../contact/support/index.html?product=smartflower-dc">Technical Support</a></div>
       
     </div>
@@ -166,7 +286,7 @@
 <section class="product-specs" aria-labelledby="specs-title">
   <div class="product-specs-inner">
     <h2 id="specs-title">Specifications</h2>
-    <div class="spec-groups"><details class="spec-group"><summary>System</summary><table class="spec-table"><tbody><tr><th scope="row">Solar</th><td>2.5 kW dual-axis tracker</td></tr><tr><th scope="row">Operation</th><td>Off-grid, battery required</td></tr><tr><th scope="row">Battery</th><td>11.4 kWh LFP internal, or external 48 V</td></tr><tr><th scope="row">Auxiliary PV</th><td>Up to 3,200 W (option)</td></tr></tbody></table></details><details class="spec-group"><summary>DC outputs</summary><table class="spec-table"><tbody><tr><th scope="row">Regulated channels</th><td>Up to 3</td></tr><tr><th scope="row">Voltage</th><td>12, 24 or 48 VDC per channel</td></tr><tr><th scope="row">Power</th><td>720 / 960 / 1008 W per channel</td></tr><tr><th scope="row">Options</th><td>48 V battery-bus output, PoE++</td></tr><tr><th scope="row">Branch breakers</th><td>Up to 10, 1–35 A</td></tr></tbody></table></details><details class="spec-group"><summary>Mechanical</summary><table class="spec-table"><tbody><tr><th scope="row">Height</th><td>16 ft (5 m) max</td></tr><tr><th scope="row">Active area</th><td>17 ft (5.2 m) diameter</td></tr><tr><th scope="row">Enclosure</th><td>NEMA 3R</td></tr><tr><th scope="row">Foundation</th><td>Earth screws, concrete or pre-cast pad</td></tr><tr><th scope="row">Wind protection</th><td>Remote wind sensor</td></tr></tbody></table></details></div>
+    <div class="spec-groups"><details class="spec-group"><summary>System</summary><table class="spec-table"><tbody><tr><th scope="row">Solar</th><td>2.5 kW dual-axis tracker</td></tr><tr><th scope="row">Operation</th><td>Off-grid, battery required</td></tr><tr><th scope="row">Battery</th><td>11.4 kWh LFP internal, or external 48 V</td></tr><tr><th scope="row">Auxiliary PV</th><td>Up to 3,200 W (option)</td></tr></tbody></table></details><details class="spec-group"><summary>DC outputs</summary><table class="spec-table"><tbody><tr><th scope="row">Regulated channels</th><td>Up to 3</td></tr><tr><th scope="row">Voltage</th><td>12, 24 or 48 VDC per channel</td></tr><tr><th scope="row">Power</th><td>720 / 960 / 1008 W per channel</td></tr><tr><th scope="row">Options</th><td>48 V battery-bus output, PoE++</td></tr><tr><th scope="row">Branch breakers</th><td>Up to 10, 1–35 A</td></tr></tbody></table></details><details class="spec-group"><summary>Mechanical</summary><table class="spec-table"><tbody><tr><th scope="row">Height</th><td>16 ft (5 m) max</td></tr><tr><th scope="row">Active area</th><td>17 ft (5.2 m) diameter</td></tr><tr><th scope="row">Enclosure</th><td>NEMA 3R</td></tr><tr><th scope="row">Foundation</th><td>Earth screws, concrete or pre-cast pad</td></tr><tr><th scope="row">Wind protection</th><td>Remote wind sensor</td></tr><tr><th scope="row">Weight</th><td>2,050–2,500 lb (930–1,134 kg), by configuration</td></tr><tr><th scope="row">Operating temperature</th><td>−4 to +140 °F (−20 to +60 °C)</td></tr></tbody></table></details></div>
   </div>
 </section>
 </main>
