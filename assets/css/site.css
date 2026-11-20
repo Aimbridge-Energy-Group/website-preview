@@ -171,11 +171,11 @@ html:not(.js) .cat:hover>.flyout,html:not(.js) .cat:focus-within>.flyout{display
 /* rotating product panel (change log #84): one product per page load; render shown as supplied on white */
 .hero-products{min-width:0}
 .hero-product[hidden]{display:none}
-/* featured product (#110): dark teal card, the product cutout sits directly on the gradient */
-.hero-product{border-radius:22px;overflow:hidden;background:linear-gradient(170deg,#1b3d4c 0%,#102b3a 45%,#09182a 100%);color:#fff;border:1px solid #ffffff2e;box-shadow:0 30px 70px rgba(0,0,0,.35)}
-.hero-product-image{aspect-ratio:4/3;padding:26px 30px 6px}
+/* featured product (#110): no card; the product cutout sits directly on the opening section's dark gradient */
+.hero-product{color:#fff}
+.hero-product-image{aspect-ratio:4/3;padding:0 0 4px}
 .hero-product-image img{display:block;width:100%;height:100%;object-fit:contain}
-.hero-product-body{padding:16px 28px 26px}
+.hero-product-body{padding:12px 0 0}
 .hero-product-body .kicker{color:var(--green-light)}
 .hero-product-name{margin:8px 0 14px;font-size:clamp(24px,2.2vw,30px);letter-spacing:-.02em;color:#fff}
 .hero-product-points{list-style:none;margin:0 0 18px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
@@ -185,7 +185,7 @@ html:not(.js) .cat:hover>.flyout,html:not(.js) .cat:focus-within>.flyout{display
 .hero-product-link{font-size:14px;font-weight:800;color:var(--green-light);text-decoration:none}
 .hero-product-link:hover{text-decoration:underline}
 @media(max-width:1050px){.hero-inner{grid-template-columns:1fr;gap:40px}.hero-products{max-width:620px}}
-@media(max-width:560px){.hero-product-points{grid-template-columns:1fr}.hero-product-body{padding:20px}}
+@media(max-width:560px){.hero-product-points{grid-template-columns:1fr}}
 .hero h1{max-width:900px;margin-top:0}
 .hero-intro{max-width:700px;margin:0;font-size:18px;line-height:1.7;color:var(--muted-dark)}
 .actions{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 0}
