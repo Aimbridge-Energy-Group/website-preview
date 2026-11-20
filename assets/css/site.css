@@ -197,8 +197,12 @@ html:not(.js) .cat:hover>.flyout,html:not(.js) .cat:focus-within>.flyout{display
    white cards; whole card is clickable; renders shown as supplied on white */
 .products{background:var(--navy);color:#fff}
 .products h2{margin:0 0 36px}
-/* homepage video above the product cards (#122): supplied MP4 as is, 16:9, rounded like the cards */
-.home-video{margin:0 0 56px;border-radius:18px;overflow:hidden;background:#000;aspect-ratio:16/9}
+/* homepage video section below the product cards (#122): light band, heading + one line, supplied MP4 as is,
+   16:9, rounded like the cards; the custom-banner section below supplies the gap */
+.home-video-section{background:var(--bg-alt);padding-bottom:0}
+.home-video-section h2{margin:0}
+.home-video-text{margin:14px 0 32px;font-size:17px;line-height:1.6;color:var(--muted)}
+.home-video{border-radius:18px;overflow:hidden;background:#000;aspect-ratio:16/9}
 .home-video video{display:block;width:100%;height:100%;object-fit:contain;background:#000}
 .productgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
 .pcard{position:relative;isolation:isolate;border-radius:18px;overflow:hidden;background:#fff;color:var(--ink);transition:transform .22s ease,box-shadow .22s ease}
