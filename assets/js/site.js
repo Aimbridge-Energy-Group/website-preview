@@ -251,12 +251,20 @@
         var value = sendLabel[name] ? el.options[el.selectedIndex].text : el.value;
         fields.push({ objectTypeId: '0-1', name: map[name], value: value });
       });
+      var payload = { fields: fields };
+      // Page address only from the real site (#121): HubSpot accepts but silently drops entries naming another
+      // host's page (seen with the github.io preview).
+      var host = form.getAttribute('data-site-host');
+      var h = location.hostname;
+      if (host && (h === host || h.slice(-host.length - 1) === '.' + host)) {
+        payload.context = { pageUri: location.href, pageName: document.title };
+      }
       button.disabled = true;
       status.hidden = true;
       fetch(form.getAttribute('data-submit'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ fields: fields, context: { pageUri: location.href, pageName: document.title } })
+        body: JSON.stringify(payload)
       }).then(function (r) {
         if (!r.ok) throw new Error('HTTP ' + r.status);
         show(form.getAttribute('data-sent'), 'sent');  // button stays disabled so it is not sent twice
