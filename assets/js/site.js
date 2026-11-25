@@ -248,7 +248,9 @@
       Object.keys(map).forEach(function (name) {
         var el = form.elements[name];
         if (!el || !el.value) return;
-        var value = sendLabel[name] ? el.options[el.selectedIndex].text : el.value;
+        var opt = el.options ? el.options[el.selectedIndex] : null;
+        // data-hs: HubSpot's own value where it differs from the visible name (#135: PowerCor™ in HubSpot)
+        var value = sendLabel[name] ? (opt.getAttribute('data-hs') || opt.text) : el.value;
         fields.push({ objectTypeId: '0-1', name: map[name], value: value });
       });
       var payload = { fields: fields };

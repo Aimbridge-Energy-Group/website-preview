@@ -451,6 +451,19 @@ button.btn{cursor:pointer}
 .footer-brand .draft-note{padding:4px 10px;font-size:12px;border-radius:6px}
 .footer-brand .draft-note strong{font-size:10px;margin-right:6px}
 .footer-contact{margin:0}
+.footer-social{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;color:#dce6ed}
+.footer-social:hover,.footer-social:focus-visible{color:#fff;background:#ffffff14}
+/* office and mailing address (#134): About page section and the Sales contact card */
+.company-address h2,.company-address h3{margin:0 0 10px}
+.company-address address{font-style:normal;line-height:1.7}
+.contact-box .company-address{margin-top:26px;padding-top:22px;border-top:1px solid #ffffff25}
+.contact-box .company-address h3{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--green-light)}
+.contact-box .company-address address{color:#dce6ed}
+.about-address{background:var(--bg-alt)}
+.about-address h2{font-size:28px;letter-spacing:-.02em}
+.about-address address{font-size:17px;color:var(--ink)}
+/* Become a Partner page (#134): form card centred, one column wide */
+.partner-wrap{max-width:820px}
 .footer-contact a{color:#dce6ed}
 .footer-links ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 26px}
 .footer-links a{color:#dce6ed;text-decoration:none}
